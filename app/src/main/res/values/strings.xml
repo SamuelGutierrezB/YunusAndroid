@@ -1,0 +1,68 @@
+<resources>
+    <!-- General app strings -->
+    <string name="app_name">Yunus</string>
+    <!-- Login screen strings -->
+    <string name="login">Login</string>
+    <string name="verify">Verify</string>
+    <string name="phone">Phone</string>
+    <string name="otp">OTP Code</string>
+    <!-- Create profile screen strings -->
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <!-- Home screen strings -->
+    <string name="available_yunus">Available Yunus</string>
+    <string name="icon_yunus">Yunus Icon</string>
+    <string name="default_balance">0.00</string>
+    <!-- Transactions screen strings -->
+    <string name="transfer">Transfer</string>
+    <string name="who_is_receiving">Who is receiving?</string>
+    <string name="amount">Amount</string>
+    <string name="amount_dots">Amount:</string>
+    <string name="fill_user_information">Fill user information</string>
+    <string name="fill_transaction_information">Fill transaction information</string>
+    <string name="real_amount">Real amount:</string>
+    <string name="concept">Concept</string>
+    <string name="search_user">Search user</string>
+    <string name="search">Search</string>
+    <string name="contribution_rate">Contribution Rate:</string>
+    <string name="zero">0.00</string>
+    <string name="no_transactions">No transactions yet</string>
+    <string name="icon_transaction">Transaction Icon</string>
+    <string name="sender">Sender</string>
+    <string name="receiver">Receiver</string>
+    <string name="information">Information</string>
+    <string name="close">Close</string>
+    <!-- Profile screen strings -->
+    <string name="hi">Hi!</string>
+    <string name="member_since">Member since</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="icon_profile">Profile Icon</string>
+    <string name="logout">Logout</string>
+    <!-- Error messages -->
+    <string name="invalid_phone">Invalid phone number</string>
+    <string name="same_phone">Can\'t transfer to yourself</string>
+    <string name="user_not_found">User not found</string>
+    <string name="invalid_otp">Invalid OTP code</string>
+    <string name="error_verifying_otp">OTP Error: Error verifying OTP</string>
+    <string name="unfilled">Unfilled fields</string>
+    <string name="error_transaction">Transaction Error: Error performing transaction</string>
+    <string name="minimum_length">The minimum length is 3 characters</string>
+    <string name="error">Error:</string>
+    <!-- Success messages -->
+    <string name="welcome">Welcome</string>
+    <string name="otp_sent">OTP sent successfully</string>
+    <string name="session_closed">Session closed</string>
+    <string name="profile_updated">Profile updated successfully</string>
+    <string name="profile_deleted">Profile deleted successfully</string>
+    <string name="transaction_successful">Transaction successful</string>
+    <!-- Bottom navigation menu -->
+    <string name="home">Home</string>
+    <string name="transactions">Transactions</string>
+    <string name="profile">Profile</string>
+    <!-- Content dialog strings -->
+    <string name="cancel">Cancel</string>
+    <string name="ask_for_sign_out">Are you sure you want to sign out?</string>
+    <string name="ask_for_delete_account">Are you sure you want to DELETE your account? You can\'t recover it.</string>
+</resources>

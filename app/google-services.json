@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "662840172412",
+    "project_id": "abzikel-yunus",
+    "storage_bucket": "abzikel-yunus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662840172412:android:4446a68413ebd278054ef9",
+        "android_client_info": {
+          "package_name": "com.abzikel.yunus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB424zvomMTp-cUM3nj6U-8t3lhPM4d65E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

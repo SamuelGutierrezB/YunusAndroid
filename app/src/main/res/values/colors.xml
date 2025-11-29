@@ -1,0 +1,11 @@
+<resources>
+    <!-- Colors -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="grape">#7222A5</color>
+    <color name="light_grape">#337222A5</color>
+    <color name="fern_green">#4A7856</color>
+    <color name="moonstone">#2AB7CA</color>
+    <color name="red">#EF233C</color>
+    <color name="night">#011502</color>
+    <color name="taupe_gray">#8F8389</color>
+</resources>

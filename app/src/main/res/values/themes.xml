@@ -1,0 +1,38 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Yunus" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/grape</item>
+        <item name="colorPrimaryVariant">@color/grape</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/fern_green</item>
+        <item name="colorSecondaryVariant">@color/moonstone</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/night</item>
+
+        <!-- Text configuration -->
+        <item name="android:textColor">@color/night</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <!-- Button configuration -->
+    <style name="CustomPositiveButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/fern_green</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="CustomNegativeButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@drawable/bkg_alert_dialog</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>
