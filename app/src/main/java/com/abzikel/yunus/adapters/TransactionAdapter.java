@@ -81,15 +81,15 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             DecimalFormat decimalFormat = new DecimalFormat("0.00");
             double displayedYunus = transaction.getSenderId().equals(uid)
                     ? transaction.getYunus()
-                    : transaction.getYunus() * 0.9;
+                    : transaction.getYunus() * 1;
+            // transaction.getYunus() * 0.9;
             String displayedYunusText = decimalFormat.format(displayedYunus);
 
             // Set the image based on the transaction type
             ivTransaction.setImageResource(
                     transaction.getSenderId().equals(uid)
                             ? R.drawable.ic_send
-                            : R.drawable.ic_receive
-            );
+                            : R.drawable.ic_receive);
 
             // Initialize views
             tvYunus.setText(displayedYunusText);
@@ -115,7 +115,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             TextView tvConcept = view.findViewById(R.id.tvConcept);
 
             // Hide concept if it's empty
-            if (transaction.getConcept().isEmpty()) tvConcept.setVisibility(View.GONE);
+            if (transaction.getConcept().isEmpty())
+                tvConcept.setVisibility(View.GONE);
 
             // Initialize views
             tvSenderName.setText(transaction.getSenderName());
