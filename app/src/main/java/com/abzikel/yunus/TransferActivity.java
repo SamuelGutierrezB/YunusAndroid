@@ -178,7 +178,7 @@ public class TransferActivity extends AppCompatActivity {
         EditText etvAmount = dialogView.findViewById(R.id.etvAmount);
         EditText etvConcept = dialogView.findViewById(R.id.etvConcept);
         TextView tvAmount = dialogView.findViewById(R.id.tvAmount);
-        TextView tvContributionRate = dialogView.findViewById(R.id.tvContributionRate);
+        //TextView tvContributionRate = dialogView.findViewById(R.id.tvContributionRate);
         TextView tvRealAmount = dialogView.findViewById(R.id.tvRealAmount);
         Button btnSave = dialogView.findViewById(R.id.btnSave);
 
@@ -203,24 +203,24 @@ public class TransferActivity extends AppCompatActivity {
                 if (s.toString().isEmpty()) {
                     // Reset the TextViews
                     tvAmount.setText(zeroString);
-                    tvContributionRate.setText(zeroString);
+                    //tvContributionRate.setText(zeroString);
                     tvRealAmount.setText(zeroString);
                 } else {
                     try {
                         // Parse the amount and update the TextViews
                         double amount = Double.parseDouble(s.toString());
                         String formattedAmount = String.format(Locale.getDefault(), "%.2f", amount);
-                        String contributionRate = String.format(Locale.getDefault(), "%.2f", amount * 0.1);
-                        String realAmount = String.format(Locale.getDefault(), "%.2f", amount * 0.9);
+                        //String contributionRate = String.format(Locale.getDefault(), "%.2f", amount * 0.1);
+                        String realAmount = String.format(Locale.getDefault(), "%.2f", amount * 1);
 
                         // Set the text amounts to the TextViews
                         tvAmount.setText(formattedAmount);
-                        tvContributionRate.setText(contributionRate);
+                        //tvContributionRate.setText(contributionRate);
                         tvRealAmount.setText(realAmount);
                     } catch (NumberFormatException e) {
                         // Handle invalid number input gracefully
                         tvAmount.setText(zeroString);
-                        tvContributionRate.setText(zeroString);
+                        //tvContributionRate.setText(zeroString);
                         tvRealAmount.setText(zeroString);
                     }
                 }
@@ -254,8 +254,8 @@ public class TransferActivity extends AppCompatActivity {
 
             // Update TextViews
             this.tvAmount.setText(String.valueOf(transactionAmount));
-            this.tvContributionRate.setText(String.valueOf(transactionAmount * 0.1));
-            this.tvRealAmount.setText(String.valueOf(transactionAmount * 0.9));
+            //this.tvContributionRate.setText(String.valueOf(transactionAmount * 0.1));
+            this.tvRealAmount.setText(String.valueOf(transactionAmount * 1));
 
             // Set concept text
             if (!concept.isEmpty()) {
@@ -306,7 +306,8 @@ public class TransferActivity extends AppCompatActivity {
 
         // Calculate the commission and transfer amount
         double contribution = transactionAmount * 0.1;
-        double transferAmount = transactionAmount - contribution;
+        //double transferAmount = transactionAmount - contribution;
+        double transferAmount = transactionAmount;
 
         // Get concept
         String concept = tvConcept.getText().toString();
@@ -323,8 +324,8 @@ public class TransferActivity extends AppCompatActivity {
                 "yunus", FieldValue.increment(transferAmount));
 
         // Update the bank's Yunus balance with the commission
-        batch.update(db.collection("users").document(bankId),
-                "yunus", FieldValue.increment(contribution));
+        //batch.update(db.collection("users").document(bankId),
+        //        "yunus", FieldValue.increment(contribution));
 
         // Get transaction document
         DocumentReference transactionDoc = db.collection("transactions").document();
