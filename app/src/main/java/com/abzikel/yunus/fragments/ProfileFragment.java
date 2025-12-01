@@ -21,8 +21,13 @@ import com.abzikel.yunus.R;
 import com.abzikel.yunus.pojos.User;
 import com.abzikel.yunus.utils.UserManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.text.DateFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class ProfileFragment extends Fragment {
@@ -46,6 +51,7 @@ public class ProfileFragment extends Fragment {
         TextView tvCreation = view.findViewById(R.id.tvCreation);
         TextView tvEditProfile = view.findViewById(R.id.tvEditProfile);
         TextView tvLogout = view.findViewById(R.id.tvLogout);
+        TextView tvResetBalances = view.findViewById(R.id.tvResetBalances);
 
         // Get user data from the UserManager
         User currentUser = UserManager.getInstance().getCurrentUserData();
@@ -66,6 +72,9 @@ public class ProfileFragment extends Fragment {
 
         // Set click listener for the logout button
         tvLogout.setOnClickListener(v -> logout());
+
+        // Set click listener for the reset balances button
+        tvResetBalances.setOnClickListener(v -> showResetConfirmation());
     }
 
     private void logout() {
@@ -112,6 +121,77 @@ public class ProfileFragment extends Fragment {
         // Redirect to the desired activity
         Intent intent = new Intent(requireContext(), activityClass);
         startActivity(intent);
+    }
+
+    private void showResetConfirmation() {
+        // Inflate custom content dialog and get context
+        Context context = requireContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View dialogView = inflater.inflate(R.layout.content_dialog_confirmation, null);
+
+        // Link XML to Java
+        TextView tvMessage = dialogView.findViewById(R.id.tvMessage);
+        Button btnPositive = dialogView.findViewById(R.id.btnPositive);
+        Button btnNegative = dialogView.findViewById(R.id.btnNegative);
+
+        // Initialize views
+        tvMessage.setText("¿Estás seguro de que quieres resetear todos los saldos?");
+        btnPositive.setText("Cancelar");
+        btnNegative.setText("Resetear");
+
+        // Create Alert Dialog to ask confirmation
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+
+        // Add listeners
+        btnNegative.setOnClickListener(v -> {
+            resetAllBalances();
+            dialog.dismiss();
+        });
+        btnPositive.setOnClickListener(v -> dialog.dismiss());
+
+        // Show Alert Dialog
+        dialog.show();
+    }
+
+    private void resetAllBalances() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // IDs que NO quieres resetear
+        List<String> excludeIds = Arrays.asList(
+                "tWA7DulofVPOXW2x3RP4vLNgpTZ2",
+                "gmrg1KQc5rgcFItTe6nUt3BK4pX2",
+                "u7IkKaeZzWfhYujwYbbiOsGdWRS2"
+        // agrega más si quieres
+        );
+
+        db.collection("users").get().addOnSuccessListener(snapshot -> {
+            WriteBatch batch = db.batch();
+
+            for (DocumentSnapshot doc : snapshot.getDocuments()) {
+                String userId = doc.getId();
+
+                // Si el usuario está en la lista de excluidos, no lo tocamos
+                if (excludeIds.contains(userId)) {
+                    continue;
+                }
+
+                // Resetear el yunus a 0.00
+                batch.update(doc.getReference(), "yunus", 0.00);
+            }
+
+            batch.commit()
+                    .addOnSuccessListener(v -> {
+                        Toast.makeText(requireContext(), "Saldos reseteados papito", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(requireContext(), "Error al resetear", Toast.LENGTH_SHORT).show();
+                    });
+
+        }).addOnFailureListener(e -> {
+            Toast.makeText(requireContext(), "Error al obtener usuarios", Toast.LENGTH_SHORT).show();
+        });
     }
 
 }

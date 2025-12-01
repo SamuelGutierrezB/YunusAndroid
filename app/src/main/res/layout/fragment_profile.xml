@@ -63,5 +63,19 @@
         app:drawableEndCompat="@drawable/ic_arrow"
         app:drawableStartCompat="@drawable/ic_logout" />
 
+    <TextView
+        android:id="@+id/tvResetBalances"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bkg_selector_round"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="Resetear Saldos"
+        android:textColor="@color/grape"
+        android:textSize="22sp"
+        app:drawableEndCompat="@drawable/ic_arrow" />
+
 
 </LinearLayout>
