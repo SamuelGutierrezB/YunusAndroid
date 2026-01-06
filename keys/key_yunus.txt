@@ -1,0 +1,3 @@
+store password: lorbla7er
+alias: key_yunus
+password: lorbla7er
